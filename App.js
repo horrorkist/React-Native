@@ -1,21 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import AppLoading from "expo-app-loading";
+import * as Font from "expo-font";
+import { Ionicons } from "@expo/vector-icons";
+import { Asset } from "expo-asset";
+import { Image } from "react-native";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const [ready, setReady] = useState(false);
+  const onFinish = () => setReady(true);
+  const startLoading = async () => {
+    await Font.loadAsync(Ionicons.font);
+    // await Asset.loadAsync(require("./some-local-image.png"));
+    // await Image.prefetch("someOnlineImageUrl");
+  };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  if (!ready)
+    return (
+      <AppLoading
+        startAsync={startLoading}
+        onFinish={onFinish}
+        onError={console.error}
+      ></AppLoading>
+    );
+
+  return null;
+}
