@@ -4,6 +4,7 @@ import Movies from "../screens/movies";
 import TV from "../screens/tv";
 import Search from "../screens/search";
 import { useColorScheme } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -23,11 +24,50 @@ export default function Tabs() {
         headerTitleStyle: {
           color: isDark ? "white" : "black",
         },
+        tabBarLabelStyle: {
+          fontSize: 14,
+        },
       }}
     >
-      <Tab.Screen name="Movies" component={Movies}></Tab.Screen>
-      <Tab.Screen name="TV" component={TV}></Tab.Screen>
-      <Tab.Screen name="Search" component={Search}></Tab.Screen>
+      <Tab.Screen
+        name="Movies"
+        component={Movies}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons
+              name={focused ? "film" : "film-outline"}
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+      ></Tab.Screen>
+      <Tab.Screen
+        name="TV"
+        component={TV}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons
+              name={focused ? "tv" : "tv-outline"}
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+      ></Tab.Screen>
+      <Tab.Screen
+        name="Search"
+        component={Search}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons
+              name={focused ? "search" : "search-outline"}
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+      ></Tab.Screen>
     </Tab.Navigator>
   );
 }
