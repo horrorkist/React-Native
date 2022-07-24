@@ -1,6 +1,7 @@
 import react from "react";
 import { Text } from "react-native";
 import styled, { ThemeConsumer } from "styled-components/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 const Btn = styled.TouchableOpacity`
   display: flex;
@@ -10,7 +11,9 @@ const Btn = styled.TouchableOpacity`
   background-color: ${(props) => props.theme.mainBgColor};
 `;
 
-export default function Movies({ navigation: { navigate } }) {
+export default function Movies({
+  navigation: { navigate },
+}: NativeStackScreenProps<any, "Movies">) {
   return (
     <Btn onPress={() => navigate("stacks", { screen: "three" })}>
       <ThemeConsumer>
