@@ -18,7 +18,7 @@ const ScreenTwo = ({ navigation: { navigate } }) => {
     </TouchableOpacity>
   );
 };
-const ScreenThree = ({ navigation: { navigate, setOptions } }) => {
+const ScreenThree = ({ navigation: { navigate, setOptions, goBack } }) => {
   return (
     <>
       <TouchableOpacity onPress={() => navigate("one")}>
@@ -27,7 +27,7 @@ const ScreenThree = ({ navigation: { navigate, setOptions } }) => {
       <TouchableOpacity onPress={() => setOptions({})}>
         <Text>Three</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigate("one")}>
+      <TouchableOpacity onPress={() => goBack()}>
         <Text>Three</Text>
       </TouchableOpacity>
     </>
