@@ -1,7 +1,6 @@
 import react from "react";
 import { Text } from "react-native";
-import { useTheme } from "styled-components";
-import styled from "styled-components/native";
+import styled, { ThemeConsumer } from "styled-components/native";
 
 const Btn = styled.TouchableOpacity`
   display: flex;
@@ -12,10 +11,11 @@ const Btn = styled.TouchableOpacity`
 `;
 
 export default function Movies({ navigation: { navigate } }) {
-  const theme = useTheme();
   return (
     <Btn onPress={() => navigate("stacks", { screen: "three" })}>
-      <Text style={{ color: theme.textColor }}>Movies</Text>
+      <ThemeConsumer>
+        {(theme) => <Text style={{ color: theme.textColor }}>Movies</Text>}
+      </ThemeConsumer>
     </Btn>
   );
 }
