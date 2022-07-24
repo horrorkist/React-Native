@@ -6,11 +6,12 @@ import { Image, View, Text } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
 import Tabs from "./navigation/Tabs";
+import Stacks from "./navigation/Stacks";
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Tabs />
+      <Stacks />
     </NavigationContainer>
   );
 }
